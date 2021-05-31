@@ -1,6 +1,5 @@
 import React from "react";
 import { Component } from "react";
-import { Carousel } from "react-bootstrap";
 
 export default class Statistiques extends Component {
     state = {
@@ -12,7 +11,7 @@ export default class Statistiques extends Component {
         const response = await fetch(url);
         const data = await response.json();
         console.log(data.dates[today].countries.Morocco);
-        const name = data.dates[today].countries.Morocco.name;
+        /*const name = data.dates[today].countries.Morocco.name;
         const today_confirmed = data.dates[today].countries.Morocco.today_confirmed;
         const today_deaths = data.dates[today].countries.Morocco.today_deaths;
         const today_new_confirmed = data.dates[today].countries.Morocco.today_new_confirmed;
@@ -28,7 +27,7 @@ export default class Statistiques extends Component {
         const yesterday_confirmed = data.dates[today].countries.Morocco.yesterday_confirmed;
         const yesterday_deaths = data.dates[today].countries.Morocco.yesterday_deaths;
         const yesterday_open_cases = data.dates[today].countries.Morocco.yesterday_open_cases;
-        const yesterday_recovered = data.dates[today].countries.Morocco.yesterday_recovered;
+        const yesterday_recovered = data.dates[today].countries.Morocco.yesterday_recovered;*/
     }
     getDate(){
         var today = new Date();

@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel , Card ,CardGroup ,Image, Col} from "react-bootstrap";
+import { Carousel,Image, Col} from "react-bootstrap";
 
 export default function Home() {
     return (
