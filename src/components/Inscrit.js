@@ -142,7 +142,7 @@ export default function Inscrit() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-            <Nav.Link as={NavLink} to="/inscrit">{"Vous avez déjà un compte? Se connecter"}</Nav.Link>  
+            <Nav.Link as={NavLink} to="/connect">{"Vous avez déjà un compte? Se connecter"}</Nav.Link>  
             </Grid>
           </Grid>
         </form>
