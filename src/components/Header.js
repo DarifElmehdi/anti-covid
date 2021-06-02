@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Container, Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -9,10 +10,11 @@ export default function Header() {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav" >
       <Nav className="ml-auto" text-align="left">
-        <Nav.Link href="/">Accueil</Nav.Link>
-        <Nav.Link href="/precaution">Précaution</Nav.Link>
-        <Nav.Link href="/statistiques">Statistiques</Nav.Link>
-        <Nav.Link href="/covid19">Covid-19</Nav.Link>
+        <Nav.Link as={NavLink} to="/">Accueil</Nav.Link>
+        <Nav.Link as={NavLink} to="/precaution">Précaution</Nav.Link>
+        <Nav.Link as={NavLink} to="/statistiques">Statistiques</Nav.Link>
+        <Nav.Link as={NavLink} to="/covid19">Covid-19</Nav.Link>
+        <Nav.Link as={NavLink} to="/connect">Se connecter</Nav.Link>
       </Nav>
     </Navbar.Collapse>
     </Container>
