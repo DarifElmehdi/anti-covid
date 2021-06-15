@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-/*function getDate(){
+function getDate(){
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
 }
 async function componentDidMount() {
   const today = getDate();
-  const url = "https://api.covid19tracking.narrativa.com/api/"+today+"/country/morocco";
+  const url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=OBJECTID,Country_Region,Last_Update,Confirmed,Recovered,Active,Incident_Rate,People_Tested,People_Hospitalized,Mortality_Rate,Deaths&outSR=4326&f=json";
   const response = await fetch(url);
   const data = await response.json();
+  console.log(data);
 
 
-  const name = data.dates[today].countries.Morocco.name;
+  /*const name = data.dates[today].countries.Morocco.name;
   const today_confirmed = data.dates[today].countries.Morocco.today_confirmed;
   const today_deaths = data.dates[today].countries.Morocco.today_deaths;
   const today_new_confirmed = data.dates[today].countries.Morocco.today_new_confirmed;
@@ -46,11 +47,12 @@ async function componentDidMount() {
   const yesterday_confirmed = data.dates[today].countries.Morocco.yesterday_confirmed;
   const yesterday_deaths = data.dates[today].countries.Morocco.yesterday_deaths;
   const yesterday_open_cases = data.dates[today].countries.Morocco.yesterday_open_cases;
-  const yesterday_recovered = data.dates[today].countries.Morocco.yesterday_recovered;
-}*/
+  const yesterday_recovered = data.dates[today].countries.Morocco.yesterday_recovered;*/
+}
 
 export default function Statistiques() {
   const classes = useStyles();
+  componentDidMount();
   function FormRow() {
     return (
       <React.Fragment>

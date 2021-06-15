@@ -1,7 +1,36 @@
 import React from "react";
 import { Carousel,Image, Col} from "react-bootstrap";
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+import config from './chatbotConfig'
+import ActionProvider from './ActionProvider'
+import MessageParser from './MessageParser'
+import Chatbot from "react-chatbot-kit";
+
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
+}));
 
 export default function Home() {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     return (
     <div>
     <Carousel fade>
@@ -48,34 +77,25 @@ export default function Home() {
     <br/>
     <h3> Notre Equipe</h3>
     <br/>
-    <div class="container marketing">
-    <div class="row">
-      <div class="col-lg-4">
-        <Col>
-            <Image src="assets/darif.jpg" roundedCircle height="200" width="200"/>
-        </Col> 
-        <h3>Darif Elmehdi</h3>
-        <p>Etudiant Ingenieur à l'ENSIAS</p>
-        <p><a class="btn btn-secondary" href="/#">Contact</a></p>
-      </div>
-      <div class="col-lg-4">
-        <Col>
-            <Image  src="assets/benhidi.jpg" roundedCircle height="200" width="200" />
-        </Col> 
-        <h3>Mr. Mohammed Benhidi</h3>
-        <p>Computer Scientist chez MKDEV</p>
-        <p><a class="btn btn-secondary" href="/#">Contact</a></p>
-      </div>
-      <div class="col-lg-4">
-        <Col>
-            <Image  src="assets/elfkihi.jpg" roundedCircle height="200" width="200"/>
-        </Col> 
-        <h3>Mme. Sanaa EL FKIHI</h3>
-        <p>Professeur Habilité à l'ENSIAS</p>
-        <p><a class="btn btn-secondary" href="/#">Contact</a></p>
-      </div>
-    </div>
-    </div>
+    <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+      Open Popover
+    </Button>
+    <Popover
+      id={id}
+      open={open}
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'center',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+    >
+      <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
+    </Popover>
     <br/>
     <br/>
 

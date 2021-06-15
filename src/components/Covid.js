@@ -1,6 +1,6 @@
 import React from "react";
 import { Card ,Image} from "react-bootstrap";
-import Container from "@material-ui/core/Container";
+import {Container,Typography} from "@material-ui/core";
 
 export default function Covid() {
     return (
@@ -11,10 +11,9 @@ export default function Covid() {
                 <br/>
                 <br/>
                 <h1 class="text-left">COVID-19 CoronaVirus</h1>
-                <h3 class="text-left">
-                Maladie respiratoire émergente apparue en Chine fin 2019 avant de diffuser 
+                <Typography variant="h3">Maladie respiratoire émergente apparue en Chine fin 2019 avant de diffuser 
                 dans le monde entier, la covid 19 est causée par un coronavirus, le SARS-CoV-2.
-                </h3>
+                </Typography>
                 <br/>
                 <h4 class="text-left">Covid-19 c'est quoi exactement ? ce qu'il faut savoir.</h4>
             </Card.ImgOverlay>

@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from 'react-router-dom';
+import Chatbot from "react-chatbot-kit";
+import {  BrowserRouter as Router,  Route,  Redirect,  Switch} from 'react-router-dom';
 
 import Header from './components/Header';
 import Covid from './components/Covid';
@@ -14,6 +10,9 @@ import Statistiques from './components/Statistiques';
 import Precaution from './components/Precaution';
 import Connect from './components/Connect';
 import Inscrit from './components/Inscrit';
+import config from './components/chatbotConfig'
+import ActionProvider from './components/ActionProvider'
+import MessageParser from './components/MessageParser'
 
 const App = () => {
   return (
@@ -37,6 +36,9 @@ const App = () => {
         </Route>
         <Route path="/inscrit" exact>
           <Inscrit/>
+        </Route>
+        <Route path="/chat" exact>
+          <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
         </Route>
 
         <Redirect to="/" />
