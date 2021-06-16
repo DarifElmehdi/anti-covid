@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Chatbot from "react-chatbot-kit";
 import {  BrowserRouter as Router,  Route,  Redirect,  Switch} from 'react-router-dom';
 
@@ -13,7 +14,7 @@ import Inscrit from './components/Inscrit';
 import config from './components/chatbotConfig'
 import ActionProvider from './components/ActionProvider'
 import MessageParser from './components/MessageParser'
-
+import './App.css';
 const App = () => {
   return (
    <Router>

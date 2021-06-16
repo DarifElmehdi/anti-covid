@@ -4,33 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Fab} from "@material-ui/core";
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import config from './chatbotConfig'
 import ActionProvider from './ActionProvider'
 import MessageParser from './MessageParser'
 import Chatbot from "react-chatbot-kit";
 
-const useStyles = makeStyles((theme) => ({
-  typography: {
-    padding: theme.spacing(2),
-  },
-}));
-
 export default function Home() {
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
     return (
     <div>
     <Carousel fade>
@@ -73,32 +55,13 @@ export default function Home() {
         </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
+    
     <br/>
     <br/>
-    <h3> Notre Equipe</h3>
-    <br/>
-    <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-      Open Popover
-    </Button>
-    <Popover
-      id={id}
-      open={open}
-      anchorEl={anchorEl}
-      onClose={handleClose}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'center',
-      }}
-    >
-      <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
-    </Popover>
-    <br/>
-    <br/>
-
+      <button class="app-chatbot-button">
+      <svg viewBox="0 0 640 512" class="app-chatbot-button-icon">
+      <path d="M192,408h64V360H192ZM576,192H544a95.99975,95.99975,0,0,0-96-96H344V24a24,24,0,0,0-48,0V96H192a95.99975,95.99975,0,0,0-96,96H64a47.99987,47.99987,0,0,0-48,48V368a47.99987,47.99987,0,0,0,48,48H96a95.99975,95.99975,0,0,0,96,96H448a95.99975,95.99975,0,0,0,96-96h32a47.99987,47.99987,0,0,0,48-48V240A47.99987,47.99987,0,0,0,576,192ZM96,368H64V240H96Zm400,48a48.14061,48.14061,0,0,1-48,48H192a48.14061,48.14061,0,0,1-48-48V192a47.99987,47.99987,0,0,1,48-48H448a47.99987,47.99987,0,0,1,48,48Zm80-48H544V240h32ZM240,208a48,48,0,1,0,48,48A47.99612,47.99612,0,0,0,240,208Zm160,0a48,48,0,1,0,48,48A47.99612,47.99612,0,0,0,400,208ZM384,408h64V360H384Zm-96,0h64V360H288Z"></path></svg>
+      </button>
     </div>
     )
 }
