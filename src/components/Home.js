@@ -2,6 +2,7 @@ import React, {useState}from "react";
 import { Carousel,Image, Col} from "react-bootstrap";
 import { makeStyles } from '@material-ui/core/styles';
 
+import './App.css';
 import config from './chatbotConfig'
 import ActionProvider from './ActionProvider'
 import MessageParser from './MessageParser'
