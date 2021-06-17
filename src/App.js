@@ -4,10 +4,9 @@ import Chatbot from "react-chatbot-kit";
 import {  BrowserRouter as Router,  Route,  Redirect,  Switch} from 'react-router-dom';
 
 import Header from './components/Header';
-import Covid from './components/Covid';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Statistiques from './components/Statistiques';
+import Statistiques from './components/Statistiques'
 import Precaution from './components/Precaution';
 import Connect from './components/Connect';
 import Inscrit from './components/Inscrit';
@@ -22,9 +21,6 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Header/><Home/>
-        </Route>
-        <Route path="/covid19" exact>
-          <Header/><Covid/>
         </Route>
         <Route path="/statistiques" exact>
           <Header/><Statistiques/>

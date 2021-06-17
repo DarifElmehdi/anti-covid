@@ -18,6 +18,7 @@ export default function Home() {
     if(showChatbot) {
       setAnchorEl(event.currentTarget);
       setBotVisibility(false);
+      setValue((true));
     }
     if(!showChatbot){
       setAnchorEl(null);

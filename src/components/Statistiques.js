@@ -1,148 +1,86 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import { Container, CardContent, Typography } from "@material-ui/core";
+/*https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#00030720-fae3-4c72-8aea-ad01ba17adf8*/
+import React, { useState, useEffect }from "react";
+import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  }
-}));
+import styled from 'styled-components'
+import DataTable from 'react-data-table-component';
+import { Container } from "@material-ui/core";
 
-function getDate(){
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var yyyy = today.getFullYear();
-  today = yyyy + '-' + mm + '-' + dd;
-  return today;
-}
-async function componentDidMount() {
-  const today = getDate();
-  const url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=OBJECTID,Country_Region,Last_Update,Confirmed,Recovered,Active,Incident_Rate,People_Tested,People_Hospitalized,Mortality_Rate,Deaths&outSR=4326&f=json";
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data);
+export default function Statistiques() {    
+    const [stats, setStats] = useState([])
+    
+    useEffect(() => {
+        fetch("https://api.covid19api.com/summary")
+          .then(resp => resp.json())
+          .then(resp => {
+            setStats(resp['Countries'])
+          })
+      }, [])
+    console.log(stats)
+    //const data =   [{ country_name: "A", region: "", cases: "1", new_deaths: "44", deaths: "3", serious_critical: "1", active_cases: "566", total_recovered: "56", total_cases_per_1m_population: "33" }, { country_name: "B", region: "", cases: "2", new_deaths: "44", deaths: "3", serious_critical: "233", active_cases: "566", total_recovered: "56", total_cases_per_1m_population: "33" }, { country_name: "C", region: "", cases: "3", new_deaths: "44", deaths: "3", serious_critical: "233", active_cases: "566", total_recovered: "86", total_cases_per_1m_population: "33" }, { country_name: "D", region: "", cases: "4", new_deaths: "44", deaths: "3", serious_critical: "233", active_cases: "566", total_recovered: "86", total_cases_per_1m_population: "33" }]
+
+    const columns = [{
+        selector: 'Country',
+        name: 'Pays',
+        sortable: true,
+        style: {
+            fontSize: '1em',
+            fontWeight: 'bold'
+        },
+    }, {
+        selector: 'TotalConfirmed',
+        name: 'Total confirmé',
+        sortable: true,
+    },{
+        selector: 'NewConfirmed',
+        name: 'Nouveau confirmé',
+        sortable: true,
+    },{
+        selector: 'TotalDeaths',
+        name: 'Total de décès',
+        sortable: true,
+    }, {
+        selector: 'NewDeaths',
+        name: 'Nouveaux décès',
+        sortable: true,
+    }, {
+        selector: 'TotalRecovered',
+        name: 'Total Rétablie',
+        sortable: true,
+    }, {
+        selector: 'NewRecovered',
+        name: 'Nouveaux Rétablies',
+        sortable: true,
+    }];
 
 
-  /*const name = data.dates[today].countries.Morocco.name;
-  const today_confirmed = data.dates[today].countries.Morocco.today_confirmed;
-  const today_deaths = data.dates[today].countries.Morocco.today_deaths;
-  const today_new_confirmed = data.dates[today].countries.Morocco.today_new_confirmed;
-  const today_new_deaths = data.dates[today].countries.Morocco.today_new_deaths;
-  const today_new_open_cases = data.dates[today].countries.Morocco.today_new_open_cases;
-  const today_new_recovered = data.dates[today].countries.Morocco.today_new_recovered;
-  const today_open_cases = data.dates[today].countries.Morocco.today_open_cases;
-  const today_recovered = data.dates[today].countries.Morocco.today_recovered;
-  const today_vs_yesterday_confirmed = data.dates[today].countries.Morocco.today_vs_yesterday_confirmed;
-  const today_vs_yesterday_deaths = data.dates[today].countries.Morocco.today_vs_yesterday_deaths;
-  const today_vs_yesterday_open_cases = data.dates[today].countries.Morocco.today_vs_yesterday_open_cases;
-  const today_vs_yesterday_recovered = data.dates[today].countries.Morocco.today_vs_yesterday_recovered;
-  const yesterday_confirmed = data.dates[today].countries.Morocco.yesterday_confirmed;
-  const yesterday_deaths = data.dates[today].countries.Morocco.yesterday_deaths;
-  const yesterday_open_cases = data.dates[today].countries.Morocco.yesterday_open_cases;
-  const yesterday_recovered = data.dates[today].countries.Morocco.yesterday_recovered;*/
-}
+    const [filterText, setFilterText] = useState('');
+    const handleFilterChange = (event) => {
+        setFilterText(event.target.value)
+    }
+    const handleClear = () => {
+        if (filterText) {
+            setFilterText('');
+        }
+    };
 
-export default function Statistiques() {
-  const classes = useStyles();
-  componentDidMount();
-  function FormRow() {
+    const filteredItems = stats.filter(item => item.Country && item.Country.toLowerCase().includes(filterText.toLowerCase()));
     return (
-      <React.Fragment>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-              <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Total de cas
-                </Typography>
-                <Typography variant="body2" component="p">
-                  123564
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-          <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Total de décès
-                </Typography>
-                <Typography variant="body2" component="p">
-                  1234
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-          <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Total récupéré
-                </Typography>
-                <Typography variant="body2" component="p">
-                  123564
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-          <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Cas actifs
-                </Typography>
-                <Typography variant="body2" component="p">
-                  123564
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-          <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Nouveaux cas
-                </Typography>
-                <Typography variant="body2" component="p">
-                  0
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-          <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Nouveaux décès
-                </Typography>
-                <Typography variant="body2" component="p">
-                  123564
-                </Typography>
-              </CardContent>
-          </Paper>
-        </Grid>
-      </React.Fragment>
-    );
-  }
+        <Container maxWidth="mx">
+            <div class="input-group mb-3 mt-5">
+                <input class="form-control" id="search" type="text" placeholder="Chercher une pays" value={filterText} onChange={handleFilterChange} />
+                <div class="input-group-append">
+                    <button type="button" onClick={handleClear} class="btn btn-outline-secondary">Reset</button>
+                </div>
+            </div>
+            <DataTable
+                keyField="id"
+                columns={columns}
+                data={filteredItems}
+                striped
 
-  return (
-    <Container>
-    <br/>
-    <div className={classes.root}>
-      <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={3}>
-          <FormRow />
-        </Grid>
-      </Grid>
-    </div>
-    </Container>
-
-  );
+                fixedHeader
+            />
+        </Container>
+    )  
 }
