@@ -28,12 +28,6 @@ const App = () => {
         <Route path="/precaution" exact>
           <Header/><Precaution/>
         </Route>
-        <Route path="/connect" exact>
-          <Connect/>
-        </Route>
-        <Route path="/inscrit" exact>
-          <Inscrit/>
-        </Route>
         <Route path="/chat" exact>
           <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
         </Route>

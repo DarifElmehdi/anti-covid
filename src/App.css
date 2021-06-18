@@ -121,7 +121,7 @@
     position:fixed;
     bottom:20px;
     z-index:9999;
-    right:40px
+    right:20px
   }
 
   .app-chatbot-button-icon{
@@ -163,3 +163,30 @@
     text-align: center;
     text-indent: 10000px;
 }
+
+.jumbotron {
+  background: #358CCE;
+  color: #FFF;
+  border-radius: 0px;
+  }
+.jumbotron-sm { padding-top: 24px;
+  padding-bottom: 24px; }
+.jumbotron small {
+  color: #FFF;
+  }
+.h1 small {
+  font-size: 24px;
+  }
+
+  .app-email-button{
+    justify-content: start;
+    width:60px;
+    height:60px;
+    border-radius:35px;
+    background-color: #2898ec;
+    border:none;
+    position:fixed;
+    bottom:20px;
+    z-index:9999;
+    right:20px
+  }

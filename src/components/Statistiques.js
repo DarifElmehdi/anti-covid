@@ -1,20 +1,41 @@
-/*https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#00030720-fae3-4c72-8aea-ad01ba17adf8*/
 import React, { useState, useEffect }from "react";
-import axios from 'axios';
 import moment from 'moment';
 
+import emailjs from 'emailjs-com'
 import styled from 'styled-components'
 import DataTable from 'react-data-table-component';
-import { Container } from "@material-ui/core";
+import { Container ,Popover } from "@material-ui/core";
+import { data } from "jquery";
 
+import '../App.css'
 export default function Statistiques() {    
+    const [showInvite = true , setValue] = useState(1);
+    const [showChatbot = true , setBotVisibility] = useState(1);
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        if(showChatbot) {
+        setAnchorEl(event.currentTarget);
+        setBotVisibility(false);
+        setValue((true));
+        }
+        if(!showChatbot){
+        setAnchorEl(null);
+        setBotVisibility(true);
+        }
+        setValue((false));
+    };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
     const [stats, setStats] = useState([])
     const [global, setGlobal] = useState([])
     useEffect(() => {
         fetch("https://api.covid19api.com/summary")
           .then(resp => resp.json())
           .then(resp => {
-            setStats(resp['Countries']); setGlobal(resp['Global']);
+            setStats(resp['Countries']); 
+            setGlobal(resp['Global']);
             
           })
       }, [])
@@ -66,10 +87,47 @@ export default function Statistiques() {
             setFilterText('');
         }
     };
+    function getSpecificData(country){
+        for (var i=0; i < stats.length ; i++) {
+            if (stats[i].Country == country){
+                return stats[i];
+            }
+        }
+    }
+
+    function sendEmail(e) {
+        e.preventDefault();
+        const myStat = getSpecificData(e.target[2].value)
+        emailjs.send("service_lpapieb","template_3q8g3n7",{
+            to_name: e.target[1].value,
+            to_email: e.target[0].value,
+            country: e.target[2].value,
+            T_confirmed: myStat['TotalConfirmed'],
+            N_confirmed: myStat['NewConfirmed'],
+            T_deaths: myStat['TotalDeaths'],
+            N_deaths: myStat['NewDeaths'],
+            T_recovered: myStat['TotalRecovered'],
+            N_recovred: myStat['NewRecovered'],
+            G_confirmed: global['TotalConfirmed'],
+            G_Deaths: global['TotalDeaths'],
+            G_recovred: global['TotalRecovered'],
+            },'user_vhbUORBjgpIWhEFgIeb4W')
+
+    //emailjs.sendForm('service_lpapieb', 'template_3q8g3n7',e.target, 'user_vhbUORBjgpIWhEFgIeb4W')
+        .then((result) => {
+            console.log(result.text);
+            handleClick();
+            alert("Email envoyer !")
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset()
+    }
 
     const filteredItems = stats.filter(item => item.Country && item.Country.toLowerCase().includes(filterText.toLowerCase()));
     const date = getDate();
     return (
+        <div>
         <Container maxWidth="mx">
             <br/>
             <div class="row">
@@ -134,5 +192,41 @@ export default function Statistiques() {
                 fixedHeader
             />
         </Container>
+        {
+            showInvite?
+            <div class="pop-invite">Envoyer Statistiques par mail !
+            <div class="pop-invite-arrow"></div>
+            </div>
+            :null
+        }
+        
+        <button class="app-email-button" aria-describedby={id} onClick={handleClick}>
+            <img src="assets/sendMail.jpg" style={{width : 55,padding : 5}} />
+        </button>
+        <Popover id={id} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'left', }} transformOrigin={{ vertical: 'bottom', horizontal: 'right',}}  >
+            <div className="container">
+                <h2 className="card-title" style={{ fontSize: '1.9em' , margin :20 }}>Envoyer Statistiques </h2>
+                <form onSubmit={sendEmail}>
+                        <div className="form-group mx-auto justify-content">
+                            <input type="email" className="form-control" placeholder="Email Address" name="to_email"/>
+                        </div>
+                        <div className="form-group mx-auto">
+                            <input type="text" className="form-control" placeholder="Nom et Prénom" name="to_name"/>
+                        </div>
+                        <div className=" form-group mx-auto">
+                            <select type="text" className="form-control" placeholder="Pays" name="ountry">
+                            {
+                                stats.map(item => <option value={item.Country}>{item.Country}</option>)
+                            }
+                            </select>
+                        </div>
+                        <div className="pt-3 mx-auto">
+                            <input type="submit" className="btn btn-info" id="liveToastBtn" value="Envoyer"></input>
+                        </div>
+                </form>
+                <br/>
+            </div>
+        </Popover>
+        </div>
     )  
 }
