@@ -43,8 +43,11 @@ const useStyles = makeStyles({
   cardmedia : {
     backgroundColor : '#fafafa',
     border : 'none',
+    height : '400px',
     padding : '20px',
-    height : '400px'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
 },
 });
 export default function Home() {
@@ -128,13 +131,13 @@ export default function Home() {
     <br/>
     <br/>
     <Container  maxWidth="lg" className={classes.Container}>
-        <Row xs={12} sm={6} md={2}>
+        <Row sm={6} md={2}>
             <Card className={classes.cardmedia}>
-            <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
+            <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>           
               "Sans confinement, on ne pourra pas mettre fin à l'épidémie du coronavirus"
             </Typography>
-            <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
-              "Le coronavirus est un ennemi invisible."
+            <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>           
+              "Le coronavirus est un ennemi invisible"
             </Typography>
             </Card>
             <CardMedia  className={classes.cardmedia}
