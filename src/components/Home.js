@@ -38,7 +38,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   carousel : {
-    marginTop : '-80px'
   },
   cardmedia : {
     backgroundColor : '#fafafa',
