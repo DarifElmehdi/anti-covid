@@ -30,12 +30,12 @@ const config = {
      },
      // Overrides the chat button styles
      chatButton: {
-       backgroundColor: "#5ccc9d",
+       backgroundColor: "#5c999d",
      },
    },
   initialMessages: [
     createChatBotMessage(
-      `Hi I'm ${botName}. I’m here to answer your queries about COVID-19!`
+      `Bonjour ! je suis ${botName}. Et je suis là pour répondre à vos questions !`
     ),
   ],
   state: {

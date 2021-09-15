@@ -1,0 +1,30 @@
+{
+    "ID": "cc708194-0dfe-4b3f-821a-1f2e53ab2e65",
+    "Message": "",
+    "Global": {
+            "NewConfirmed": 185349,
+            "TotalConfirmed": 220396137,
+            "NewDeaths": 2283,
+            "TotalDeaths": 4564571,
+            "NewRecovered": 0,
+            "TotalRecovered": 0,
+            "Date": "2021-09-06T14:22:59.437Z"
+    },
+    "Countries": [
+        {
+            "ID": "8be75bc1-08e5-46f1-a386-23157ebdc19c",
+            "Country": "Morocco",
+            "CountryCode": "MA",
+            "Slug": "morocco",
+            "NewConfirmed": 0,
+            "TotalConfirmed": 884085,
+            "NewDeaths": 0,
+            "TotalDeaths": 13073,
+            "NewRecovered": 0,
+            "TotalRecovered": 0,
+            "Date": "2021-09-06T14:22:59.437Z",
+            "Premium": {}
+        }
+    ],
+    "Date": "2021-09-06T14:22:59.437Z"
+}

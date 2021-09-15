@@ -1,7 +1,8 @@
 import React, {useState}from "react";
 import { Carousel,Image, Col} from "react-bootstrap";
 import { makeStyles } from '@material-ui/core/styles';
-
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 import '../App.css';
 import config from './chatbotConfig'
 import ActionProvider from './ActionProvider'
@@ -9,11 +10,38 @@ import MessageParser from './MessageParser'
 import Chatbot from "react-chatbot-kit";
 import Popover from '@material-ui/core/Popover';
 import { tsConstructorType } from "@babel/types";
+import About from "./About";
 
+
+const labels = {
+  0.5: 'Inutile',
+  1: 'Inutile+',
+  1.5: 'Mauvais',
+  2: 'Mauvais+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Bien',
+  4: 'Bien+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
+
+const useStyles = makeStyles({
+  root: {
+    margin: 'auto',
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
 export default function Home() {
   const [showInvite = true , setValue] = useState(1);
   const [showChatbot = true , setBotVisibility] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const [value, setValues] = React.useState(2);
+  const [hover, setHover] = React.useState(-1);
+  const classes = useStyles();
 
   const handleClick = (event) => {
     if(showChatbot) {
@@ -72,10 +100,10 @@ export default function Home() {
         </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
+    <About/>
       {
         showInvite?
-        <div class="pop-invite">You have a question ? ask me !
-        <div class="pop-invite-arrow"></div>
+        <div class="pop-invite">Discuter avec covibot !<div class="pop-invite-arrow"></div>
         </div>
         :null
       }
@@ -88,6 +116,20 @@ export default function Home() {
       </button>
       <Popover id={id} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'left', }} transformOrigin={{ vertical: 'bottom', horizontal: 'right',}}  >
         <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
+        <div className={classes.root}>
+          <Rating
+            name="hover-feedback"
+            value={value}
+            precision={0.5}
+            onChange={(event, newValue) => {
+              setValues(newValue);
+            }}
+            onChangeActive={(event, newHover) => {
+              setHover(newHover);
+            }}
+          />
+          {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+        </div>
       </Popover>
     </div>
     )

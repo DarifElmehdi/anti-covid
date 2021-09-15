@@ -14,6 +14,9 @@ import config from './components/chatbotConfig'
 import ActionProvider from './components/ActionProvider'
 import MessageParser from './components/MessageParser'
 import './App.css';
+import SignUp from './components/signup';
+import Login from './components/login';
+import Chat from './components/Chat';
 const App = () => {
   return (
    <Router>
@@ -28,10 +31,15 @@ const App = () => {
         <Route path="/precaution" exact>
           <Header/><Precaution/>
         </Route>
-        <Route path="/chat" exact>
-          <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
+        <Route path="/login" exact>
+          <Header/><Login/>
         </Route>
-
+        <Route path="/signup" exact>
+          <Header/><SignUp/>
+        </Route>
+        <Route path="/chat" exact>
+          <Chat/>
+        </Route>
         <Redirect to="/" />
       </Switch>
     </main>
