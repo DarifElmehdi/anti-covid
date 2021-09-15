@@ -131,12 +131,15 @@ export default function Home() {
         <Row xs={12} sm={6} md={2}>
             <Card className={classes.cardmedia}>
             <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
-                Vidéos utiles
+              "Sans confinement, on ne pourra pas mettre fin à l'épidémie du coronavirus"
+            </Typography>
+            <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
+              "Le coronavirus est un ennemi invisible."
             </Typography>
             </Card>
             <CardMedia  className={classes.cardmedia}
             component="iframe"
-            image="https://www.youtube.com/embed/rAj38E7vrS8"
+            image="https://www.youtube.com/embed/0k7wEwtWAns"
             />
         </Row>
      </Container>

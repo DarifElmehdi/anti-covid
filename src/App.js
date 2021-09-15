@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Chatbot from "react-chatbot-kit";
+
 import {  BrowserRouter as Router,  Route,  Redirect,  Switch} from 'react-router-dom';
 
 import Header from './components/Header';
@@ -8,15 +8,11 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Statistiques from './components/Statistiques'
 import Precaution from './components/Precaution';
-import Connect from './components/Connect';
-import Inscrit from './components/Inscrit';
-import config from './components/chatbotConfig'
-import ActionProvider from './components/ActionProvider'
-import MessageParser from './components/MessageParser'
 import './App.css';
 import SignUp from './components/signup';
 import Login from './components/login';
 import Chat from './components/Chat';
+import Profile from './components/Profile';
 const App = () => {
   return (
    <Router>
@@ -39,6 +35,12 @@ const App = () => {
         </Route>
         <Route path="/chat" exact>
           <Chat/>
+        </Route>
+        <Route path="/contact" exact>
+          <p>contact</p>
+        </Route>
+        <Route path="/profile" exact>
+          <Profile/>
         </Route>
         <Redirect to="/" />
       </Switch>

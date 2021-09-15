@@ -22,6 +22,7 @@ export default function Header() {
         <Nav.Link as={NavLink} to="/">Accueil</Nav.Link>
         <Nav.Link as={NavLink} to="/precaution">Précaution</Nav.Link>
         <Nav.Link as={NavLink} to="/statistiques">Statistiques</Nav.Link>
+        <Nav.Link as={NavLink} to="/contact">Nous contacter</Nav.Link>
         <Nav.Link as={NavLink} to="/login">Se Connecter</Nav.Link>
       </Nav>
     </Navbar.Collapse>
