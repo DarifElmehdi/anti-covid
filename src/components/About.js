@@ -55,14 +55,12 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     border: '1px solid #A9BCD0',
     borderRadius : '50%' ,
-    paddingTop: '100%'
+    height : '300px',
+    width : '300px',
+    margin : 'auto'
   },
   cardContent: {
     flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
 }));
 

@@ -108,7 +108,7 @@ const [showInvite = true , setValue] = useState(1);
             <Typography component="h2" variant="h2" align="center"  gutterBottom>           
             RESTEZ CHEZ VOUS.SAUVEZ DES VIES.
             </Typography>
-            <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+            <Typography component="h5" variant="h5" align="center"  gutterBottom>           
             Maladie à coronavirus 2019 (COVID-19): conseils au grand public
             </Typography>
             </Carousel.Caption>

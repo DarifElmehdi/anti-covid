@@ -3,7 +3,6 @@ import { Carousel,Image, Col} from "react-bootstrap";
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import '../App.css';
 import config from './chatbotConfig'
 import ActionProvider from './ActionProvider'
 import MessageParser from './MessageParser'
@@ -11,7 +10,12 @@ import Chatbot from "react-chatbot-kit";
 import Popover from '@material-ui/core/Popover';
 import { tsConstructorType } from "@babel/types";
 import About from "./About";
-
+import '../App.css';
+import Typography from '@material-ui/core/Typography';
+import { CardMedia } from "@material-ui/core";
+import Container from '@material-ui/core/Container';
+import { Row } from "react-bootstrap";
+import {Card} from 'react-bootstrap';
 
 const labels = {
   0.5: 'Inutile',
@@ -33,6 +37,15 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
+  carousel : {
+    marginTop : '-80px'
+  },
+  cardmedia : {
+    backgroundColor : '#fafafa',
+    border : 'none',
+    padding : '20px',
+    height : '400px'
+},
 });
 export default function Home() {
   const [showInvite = true , setValue] = useState(1);
@@ -60,7 +73,7 @@ export default function Home() {
   const id = open ? 'simple-popover' : undefined;
     return (
     <div>
-    <Carousel fade>
+    <Carousel className={classes.carousel}>
     <Carousel.Item>
         <img
         className="d-block w-100"
@@ -69,8 +82,12 @@ export default function Home() {
         width="100%"
         />
         <Carousel.Caption>
-        <h2>Stop Coronavirus</h2>
-        <p>Ensemble, combattons le coronavirus.</p>
+        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
+          Stop Coronavirus
+        </Typography>
+        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+          Ensemble, combattons le coronavirus.
+        </Typography>
         </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -82,8 +99,12 @@ export default function Home() {
         />
 
         <Carousel.Caption>
-        <h2>Restez à la maison, Restez en sécurité</h2>
-        <p>Pour vous protéger et protéger les autres, restez chez vous.</p>
+        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
+          Restez à la maison, Restez en sécurité
+        </Typography>
+        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+        Pour vous protéger et protéger les autres, restez chez vous.
+        </Typography>
         </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -95,11 +116,31 @@ export default function Home() {
         />
 
         <Carousel.Caption>
-        <h2>Portez un masque</h2>
-        <p>Pour limiter la transmission des virus respiratoires et protéger vos proches.</p>
+        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
+          Portez vos masques
+        </Typography>
+        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+        Pour limiter la transmission des virus respiratoires et protéger vos proches.
+        </Typography>
         </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
+    <br/>
+    <br/>
+    <Container  maxWidth="lg" className={classes.Container}>
+        <Row xs={12} sm={6} md={2}>
+            <Card className={classes.cardmedia}>
+            <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
+                Vidéos utiles
+            </Typography>
+            </Card>
+            <CardMedia  className={classes.cardmedia}
+            component="iframe"
+            image="https://www.youtube.com/embed/rAj38E7vrS8"
+            />
+        </Row>
+     </Container>
+
     <About/>
       {
         showInvite?
