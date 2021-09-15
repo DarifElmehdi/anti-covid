@@ -1,14 +1,28 @@
 import React, { useState, useEffect }from "react";
 import moment from 'moment';
-
+import { makeStyles } from '@material-ui/core/styles';
 import emailjs from 'emailjs-com'
 import styled from 'styled-components'
 import DataTable from 'react-data-table-component';
 import { Container ,Popover } from "@material-ui/core";
 import { data } from "jquery";
+import Typography from '@material-ui/core/Typography';
 
 import '../App.css'
+
+
+const useStyles = makeStyles({
+    cbody: {
+        border : '5px',
+        width : '500px',
+        padding : '20px',
+        position : 'relative'
+    },
+  });
+
+
 export default function Statistiques() {    
+    const classes = useStyles();
     const [showInvite = true , setValue] = useState(1);
     const [showChatbot = true , setBotVisibility] = useState(1);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -40,7 +54,7 @@ export default function Statistiques() {
           })
       }, [])
     function getDate(){
-        return moment().format("DD/MM/YYYY HH:mm:ss");
+        return moment().format("HH:mm:ss");
     }
 
     const columns = [{
@@ -128,7 +142,7 @@ export default function Statistiques() {
     const date = getDate();
     return (
         <div>
-        <Container maxWidth="mx">
+        <Container maxWidth="lg">
             <br/>
             <div class="row">
                 <div class="col">
@@ -204,8 +218,10 @@ export default function Statistiques() {
             <img src="assets/sendMail.jpg" style={{width : 55,padding : 5}} />
         </button>
         <Popover id={id} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'left', }} transformOrigin={{ vertical: 'bottom', horizontal: 'right',}}  >
-            <div className="container">
-                <h2 className="card-title" style={{ fontSize: '1.9em' , margin :20 }}>Envoyer Statistiques </h2>
+            <div className="container" className={classes.cbody}>
+                <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+                Envoyer Statistiques
+                </Typography>
                 <form onSubmit={sendEmail}>
                         <div className="form-group mx-auto justify-content">
                             <input type="email" className="form-control" placeholder="Email Address" name="to_email"/>
@@ -220,8 +236,8 @@ export default function Statistiques() {
                             }
                             </select>
                         </div>
-                        <div className="pt-3 mx-auto">
-                            <input type="submit" className="btn btn-info" id="liveToastBtn" value="Envoyer"></input>
+                        <div class="text-center">
+                            <input type="submit" style={{}} class="btn btn-primary"  id="liveToastBtn" value="Envoyer"></input>
                         </div>
                 </form>
                 <br/>

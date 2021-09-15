@@ -13,6 +13,7 @@ import SignUp from './components/signup';
 import Login from './components/login';
 import Chat from './components/Chat';
 import Profile from './components/Profile';
+import Contact from './components/Contact';
 const App = () => {
   return (
    <Router>
@@ -37,7 +38,8 @@ const App = () => {
           <Chat/>
         </Route>
         <Route path="/contact" exact>
-          <p>contact</p>
+          <Header/>
+          <Contact/>
         </Route>
         <Route path="/profile" exact>
           <Profile/>
