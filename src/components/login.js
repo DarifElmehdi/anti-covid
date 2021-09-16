@@ -90,7 +90,7 @@ export default function Login() {
             label="Rester Connecter"
           />
           <Button
-            href="chat"
+            href="profile"
             type="submit"
             fullWidth
             variant="contained"

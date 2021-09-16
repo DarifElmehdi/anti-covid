@@ -215,7 +215,7 @@ export default function Statistiques() {
         }
         
         <button class="app-email-button" aria-describedby={id} onClick={handleClick}>
-            <img src="assets/sendMail.jpg" style={{width : 55,padding : 5}} />
+            <img src="assets/sendMail.jpg" style={{width : 50 }} />
         </button>
         <Popover id={id} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'left', }} transformOrigin={{ vertical: 'bottom', horizontal: 'right',}}  >
             <div className="container" className={classes.cbody}>

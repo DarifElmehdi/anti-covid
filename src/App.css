@@ -53,6 +53,7 @@
 
 .react-chatbot-kit-chat-container {
     position: relative;
+    width: '400px';
   }
   
   .react-chatbot-kit-chat-inner-container {

@@ -23,6 +23,9 @@ import Chatbot from "react-chatbot-kit";
 import Popover from '@material-ui/core/Popover';
 import Rating from "@material-ui/lab/Rating";
 import { Box } from "@material-ui/core";
+import {ShareSocial} from 'react-share-social' ;
+import { FacebookShareButton, FacebookIcon ,TwitterIcon , TwitterShareButton ,WhatsappIcon , WhatsappShareButton ,EmailIcon ,EmailShareButton} from "react-share";
+
 const useStyles = makeStyles({
     root: {
         margin: 'auto',
@@ -35,7 +38,6 @@ const useStyles = makeStyles({
     },
     card: {
         height: '100%',
-        display: 'flex',
         flexDirection: 'column',
     },
     button: {
@@ -44,9 +46,13 @@ const useStyles = makeStyles({
         position: 'relative',
         float: 'right'
     },
-    div : {
-        justifyContent : 'right',
-        display: 'inline-block'
+    div1 : {
+        margin : 'auto'
+    },
+    icon :{
+        borderRadius : '50%',
+        height: '40px',
+        width : '40px'
     },
     cardmedia : {
         border : 'none',
@@ -54,10 +60,21 @@ const useStyles = makeStyles({
         height : '360px'
     },
     Col :{
-        margin :'10px'
-    }
+    },
+    title1: {
+        fontSize : '4vw'
+      },
+      title2:{
+        fontSize : '2vw'
+      },
   });
-
+    const style = {
+        borderRadius: 3,
+        border: 0,
+        color: 'white',
+        padding: '0 30px',
+        position : 'end'
+    };
   const labels = {
     0.5: 'Inutile',
     1: 'Inutile+',
@@ -70,6 +87,7 @@ const useStyles = makeStyles({
     4.5: 'Excellent',
     5: 'Excellent+',
   };
+
 export default function Precaution() {
 const [showInvite = true , setValue] = useState(1);
   const [showChatbot = true , setBotVisibility] = useState(1);
@@ -105,21 +123,36 @@ const [showInvite = true , setValue] = useState(1);
             width="100%"
             />
             <Carousel.Caption>
-            <Typography component="h2" variant="h2" align="center"  gutterBottom>           
+            <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title1}>           
             RESTEZ CHEZ VOUS.SAUVEZ DES VIES.
             </Typography>
-            <Typography component="h5" variant="h5" align="center"  gutterBottom>           
+            <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title2}>           
             Maladie à coronavirus 2019 (COVID-19): conseils au grand public
             </Typography>
             </Carousel.Caption>
         </Carousel.Item>
         </Carousel>
+        
         <Container  maxWidth="lg">
         <br/>
+        <div className={classes.div1}>
+            <FacebookShareButton className={classes.button}
+                url="http://localhost:3000/precaution">
+                <FacebookIcon logoFillColor="white" className={classes.icon}/>
+            </FacebookShareButton>
+            <TwitterShareButton className={classes.button}
+                url="http://localhost:3000/precaution">
+                <TwitterIcon logoFillColor="white" className={classes.icon}/>
+            </TwitterShareButton>
+            <WhatsappShareButton className={classes.button}
+                url="http://localhost:3000/precaution">
+                <WhatsappIcon logoFillColor="white" className={classes.icon}/>
+            </WhatsappShareButton>
+        </div>
         <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
             Précautions
         </Typography>
-        <Row xs={12} sm={6} md={3}>
+        <Row xs={1} md={3}>
             <Col>
             <Card className={classes.card}>
                 <Card.Img className={classes.image}  variant="top" src="assets/img01.jpg" />
@@ -130,11 +163,8 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
-                    </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
                     </Button>
                 </div>
             </Card>
@@ -149,12 +179,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -168,12 +196,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -187,12 +213,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -206,12 +230,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -225,12 +247,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -245,12 +265,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -264,12 +282,10 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
@@ -283,19 +299,17 @@ const [showInvite = true , setValue] = useState(1);
                 </Card.Text>
                 </Card.Body>
                 <div className={classes.div}>
-                    <Button className={classes.button} color="primary">
+                    <Button className={classes.button} color="primary" href='https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019/advice-for-public'>
                         <MoreIcon/>
                     </Button>
-                    <Button className={classes.button} color="primary">
-                        <ShareIcon/>
-                    </Button>
+                    
                 </div>
             </Card>
             </Col>
         </Row>
         </Container>
-        <Container  maxWidth="lg">
         <br/>
+        <Container  maxWidth="lg">
         <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>           
             Vidéos utiles
         </Typography>
@@ -315,7 +329,6 @@ const [showInvite = true , setValue] = useState(1);
             <CardMedia  className={classes.cardmedia}
             component="iframe"
             image="https://www.youtube.com/embed/rAj38E7vrS8"
-
             />
         </Row>
         </Container>

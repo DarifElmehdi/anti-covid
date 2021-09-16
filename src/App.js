@@ -4,6 +4,7 @@ import React from 'react';
 import {  BrowserRouter as Router,  Route,  Redirect,  Switch} from 'react-router-dom';
 
 import Header from './components/Header';
+import PHeader from './components/PHeader';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Statistiques from './components/Statistiques'
@@ -42,6 +43,7 @@ const App = () => {
           <Contact/>
         </Route>
         <Route path="/profile" exact>
+          <PHeader/>
           <Profile/>
         </Route>
         <Redirect to="/" />

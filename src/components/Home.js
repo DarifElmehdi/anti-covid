@@ -37,7 +37,11 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
-  carousel : {
+  title1: {
+    fontSize : '6vw'
+  },
+  title2:{
+    fontSize : '4vw'
   },
   cardmedia : {
     backgroundColor : '#fafafa',
@@ -84,10 +88,10 @@ export default function Home() {
         width="100%"
         />
         <Carousel.Caption>
-        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title1} >           
           Stop Coronavirus
         </Typography>
-        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title2}>           
           Ensemble, combattons le coronavirus.
         </Typography>
         </Carousel.Caption>
@@ -101,10 +105,10 @@ export default function Home() {
         />
 
         <Carousel.Caption>
-        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
-          Restez à la maison, Restez en sécurité
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title1}>           
+          Restez à la maison
         </Typography>
-        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title2}>           
         Pour vous protéger et protéger les autres, restez chez vous.
         </Typography>
         </Carousel.Caption>
@@ -118,10 +122,10 @@ export default function Home() {
         />
 
         <Carousel.Caption>
-        <Typography component="h3" variant="h3" align="center"  gutterBottom>           
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title1}>           
           Portez vos masques
         </Typography>
-        <Typography component="h4" variant="h4" align="center"  gutterBottom>           
+        <Typography component="h1" variant="h1" align="center"  gutterBottom className={classes.title2}>           
         Pour limiter la transmission des virus respiratoires et protéger vos proches.
         </Typography>
         </Carousel.Caption>
@@ -132,10 +136,10 @@ export default function Home() {
     <Container  maxWidth="lg" className={classes.Container}>
         <Row sm={6} md={2}>
             <Card className={classes.cardmedia}>
-            <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>           
+            <Typography component="h5" variant="h4" align="left" color="textPrimary" gutterBottom >           
               "Sans confinement, on ne pourra pas mettre fin à l'épidémie du coronavirus"
             </Typography>
-            <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>           
+            <Typography component="h5" variant="h4" align="left" color="textPrimary" gutterBottom>           
               "Le coronavirus est un ennemi invisible"
             </Typography>
             </Card>
